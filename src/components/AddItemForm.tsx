@@ -1,27 +1,51 @@
-import React, { useState} from 'react';
+import { AddCircle } from "@mui/icons-material";
+import { IconButton, ListItem, TextField } from "@mui/material";
+import React, { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import { AddTaskType } from './types';
+import styled from "styled-components";
+import { AddTaskType } from "./types";
 
-const AddItem = ({ addTask } : { addTask: AddTaskType}) => {
-    const [ userInput, setUserInput ] = useState('');
+const ADD_ITEM_TEXT = "Agregar libro...";
 
-    //TODO: Type of events shouldn't be any
-    const handleChange = (e: any) => {
-        setUserInput(e.currentTarget.value)
-    }
+const StyledForm = styled.form`
+  padding-bottom: 0.5em;
+  width: 100%;
+`;
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        addTask(userInput);
-        setUserInput("");
-    }
+const StyledIconButton = styled(IconButton)`
+    float: right;
+    padding-right: 0 !important;
+`;
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input value={userInput} type="text" onChange={handleChange} placeholder="Enter task..."/>
-            <button><FaPlusCircle/></button>
-        </form>
-    );
-}
+const AddItem = ({ addTask }: { addTask: AddTaskType }) => {
+  const [userInput, setUserInput] = useState("");
+
+  //TODO: Type of events shouldn't be any
+  const handleChange = (e: any) => {
+    setUserInput(e.currentTarget.value);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    addTask(userInput);
+    setUserInput("");
+  };
+
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      <TextField
+        id="standard-basic"
+        variant="standard"
+        value={userInput}
+        type="text"
+        onChange={handleChange}
+        placeholder={ADD_ITEM_TEXT}
+      />
+      <StyledIconButton>
+        <AddCircle />
+      </StyledIconButton>
+    </StyledForm>
+  );
+};
 
 export default AddItem;

@@ -1,67 +1,54 @@
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import AddItem from './AddItemForm';
-import ToDoItem from './ToDoItem';
-import { AddTaskType, HandleToggleType, HandleRemoveType, TodoItemType, ToDoListType, GetDataType } from './types';
+import React, { useEffect } from "react";
+import AddItem from "./AddItemForm";
+import { useStickyState } from "./helpers";
+import ToDoItem from "./ToDoItem";
+import {
+  AddTaskType,
+  HandleRemoveType,
+  TodoItemType,
+  ToDoListType,
+} from "./types";
 
-const TODO_API = 'https://62c9e916d9ead251e8c237f0.mockapi.io/ToDoItem';
+import { styled } from "@mui/material/styles";
+import List from "@mui/material/List";
+import { IconButton, ListItem } from "@mui/material";
+import { AddCircle } from "@mui/icons-material";
+
+const uid = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+};
+
+const Demo = styled("div")(({ theme }) => ({
+  backgroundColor: "papayawhip",
+  'max-width': '600px',
+}));
 
 const ToDoList = () => {
-    const [toDoList, setToDoList] = useState<ToDoListType>([]);
-    // const [loading, setLoading] = useState<Boolean>(true);
-    // const [error, setError] = useState<String | null>(null);
-  
-    const getData: GetDataType = async () => {
-      try {
-        const response = await axios.get(TODO_API);
-        setToDoList(response.data);
-        // setError(null);
-      } catch (err: any) {
-        // setError(err.message);
-        setToDoList([]);
-      } finally {
-        // setLoading(false);
-      }
-    };
-  
-    const handleToggle: HandleToggleType = (id: string) => {
-      let mapped = toDoList.map(task => {
-        return task.id === id ? { ...task, complete: !task.complete } : { ...task };
-      });
-      setToDoList(mapped);
-    }
-  
-    const addTask: AddTaskType = (userInput: string) => {
-      axios.post(`${TODO_API}`, {
-        task: userInput,
-        completed: false,
-      }).then(() => {
-        getData();
-      })
-    }
-  
-    const handleRemove: HandleRemoveType = (id: string) => {
-      axios.delete(`${TODO_API}/${id}`)
-        .then(() => {
-          getData();
-        })
-    }
-  
-    useEffect(() => {
-      getData();
-    }, []);
-  
-    return (
-        <div>
-            {toDoList.map((item: TodoItemType) => {
-                return (
-                    <ToDoItem key={item.id} item={item} handleToggle={handleToggle} handleRemove={handleRemove} />
-                )
-            })}
+  const [toDoList, setToDoList] = useStickyState([], "list");
 
-            <AddItem addTask={addTask} />
-        </div>
-    );
+  const addTask: AddTaskType = (userInput: string) => {
+    setToDoList([...toDoList, { id: uid(), task: userInput }]);
+  };
+
+  const handleRemove: HandleRemoveType = (id: string) => {
+    const newToDoList = toDoList.filter((item: TodoItemType) => item.id !== id);
+    setToDoList(newToDoList);
+  };
+
+  return (
+    <Demo>
+      <List>
+        {toDoList.map((item: TodoItemType) => {
+          return (
+            <ToDoItem key={item.id} item={item} handleRemove={handleRemove} />
+          );
+        })}
+        <ListItem>
+          <AddItem addTask={addTask} />
+        </ListItem>
+      </List>
+    </Demo>
+  );
 };
 
 export default ToDoList;

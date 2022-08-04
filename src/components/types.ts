@@ -1,6 +1,5 @@
 export type TodoItemType = {
     id: string,
-    complete: boolean,
     task: string,
 };
 

@@ -1,52 +1,52 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaTrashAlt, FaRegCircle, FaRegCheckCircle } from "react-icons/fa";
-import { HandleRemoveType, HandleToggleType, TodoItemType } from './types';
+import React from "react";
+import { HandleRemoveType, TodoItemType } from "./types";
+import {
+  Avatar,
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AutoStories from "@mui/icons-material/AutoStories";
+import Create from "@mui/icons-material/Create"
+//TODO: bundle size mui?
 
-const StyledToDoItem = styled.div<Pick<TodoItemType, 'complete'>>`
-  text-decoration:  ${props => props.complete ? "line-through" : "none"};
-  display: inline-block;
-  margin-right: 1em;
-`;
+const ToDoItem = ({
+  item,
+  handleRemove,
+}: {
+  item: TodoItemType;
+  handleRemove: HandleRemoveType;
+}) => {
+  const { id, task } = item;
 
-const StyledTrashIcon = styled(FaTrashAlt)`
-    cursor: pointer;
-    margin-left: 1em;
-`
+  const handleRemoveClick = (e: any) => {
+    e.preventDefault(); //TODO: Is this needed?
+    handleRemove(e.currentTarget.getAttribute("item-id"));
+  };
 
-const StyledFaRegCheckCircle = styled(FaRegCheckCircle)`
-    cursor: pointer;
-    margin-right: 0.5em;
-`;
-
-const StyledFaRegCircle = styled(FaRegCircle)`
-    cursor: pointer;
-    margin-right: 0.5em;
-`;
-
-const ToDoItem = ({ item, handleToggle, handleRemove }: { item: TodoItemType, handleToggle: HandleToggleType, handleRemove: HandleRemoveType }) => {
-    const { id, task, complete } = item;
-
-    const handleClick = (e: any) => {
-        e.preventDefault();
-        handleToggle(e.currentTarget.getAttribute("item-id"));
-    }
-
-    const handleRemoveClick = (e: any) => {
-        e.preventDefault();
-        handleRemove(e.currentTarget.getAttribute("item-id"));
-    }
-
-    return (
-        <div id={id}>
-            {complete ? <StyledFaRegCheckCircle item-id={id} onClick={handleClick} /> : <StyledFaRegCircle item-id={id} onClick={handleClick} />}
-            <StyledToDoItem item-id={id} complete={complete} >
-                {task}
-                <StyledTrashIcon item-id={id} onClick={handleRemoveClick} />
-            </StyledToDoItem>
-        </div>
-
-    );
+  return (
+    <ListItem
+      secondaryAction={
+        <React.Fragment>
+            <IconButton>
+                <Create item-id={id} onClick={(e) => console.log(e.currentTarget.getAttribute("item-id"))}/>
+            </IconButton>
+            <IconButton edge="end" aria-label="delete">
+                <DeleteIcon item-id={id} onClick={handleRemoveClick} />
+            </IconButton>
+        </React.Fragment>
+      }
+    >
+      <ListItemAvatar>
+        <Avatar>
+          <AutoStories />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={task} />
+    </ListItem>
+  );
 };
 
 export default ToDoItem;

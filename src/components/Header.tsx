@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HEADER_TEXT = 'To Do List With Advice';
+const HEADER_TEXT = 'Oráculo Lector';
 
 const Header = () => {
     return (

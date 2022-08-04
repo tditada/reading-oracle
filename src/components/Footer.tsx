@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FOOTER_TEXT = 'Done by T.C. di Tada (@tditada)';
+const FOOTER_TEXT = 'Hecho por @masalladelpapel (instagram/tiktok)';
 
 const StyledFooter = styled.footer`
     margin-top: 3em;
