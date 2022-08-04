@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AutoStories from "@mui/icons-material/AutoStories";
-import Create from "@mui/icons-material/Create"
+import Create from "@mui/icons-material/Create";
 //TODO: bundle size mui?
 
 const ToDoItem = ({
@@ -30,12 +30,18 @@ const ToDoItem = ({
     <ListItem
       secondaryAction={
         <React.Fragment>
-            <IconButton>
-                <Create item-id={id} onClick={(e) => console.log(e.currentTarget.getAttribute("item-id"))}/>
-            </IconButton>
-            <IconButton edge="end" aria-label="delete">
-                <DeleteIcon item-id={id} onClick={handleRemoveClick} />
-            </IconButton>
+          <IconButton>
+            <Create
+              item-id={id}
+              onClick={(e) =>
+                console.log(e.currentTarget.getAttribute("item-id"))
+              }
+            />
+          </IconButton>
+          <IconButton edge="end" aria-label="delete">
+              color="primary"
+            <DeleteIcon item-id={id} onClick={handleRemoveClick} />
+          </IconButton>
         </React.Fragment>
       }
     >

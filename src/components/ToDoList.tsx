@@ -19,8 +19,9 @@ const uid = () => {
 };
 
 const Demo = styled("div")(({ theme }) => ({
-  backgroundColor: "papayawhip",
-  'max-width': '600px',
+  "max-width": "600px",
+  background: "rgb(255 255 255 / 10%)",
+  "border-radius": "1em",
 }));
 
 const ToDoList = () => {
