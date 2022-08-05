@@ -13,8 +13,12 @@ const StyledForm = styled.form`
 `;
 
 const StyledIconButton = styled(IconButton)`
-    float: right;
-    padding-right: 0 !important;
+  float: right;
+  padding-right: 0 !important;
+`;
+
+const StyledTextField = styled(TextField)`
+  width: 85%;
 `;
 
 const AddItem = ({ addTask }: { addTask: AddTaskType }) => {
@@ -33,7 +37,7 @@ const AddItem = ({ addTask }: { addTask: AddTaskType }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <TextField
+      <StyledTextField
         id="standard-basic"
         variant="standard"
         value={userInput}

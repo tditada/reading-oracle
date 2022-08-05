@@ -10,6 +10,12 @@ const StyledApp = styled.section`
   padding: 4em;
 `;
 
+const StyledMain = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -27,9 +33,9 @@ function App() {
       </React.Fragment>
       <StyledApp>
         <Header />
-        <main>
+        <StyledMain>
           <ToDoList />
-        </main>
+        </StyledMain>
         <Footer />
       </StyledApp>
     </ThemeProvider>

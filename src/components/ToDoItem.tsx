@@ -10,7 +10,13 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import AutoStories from "@mui/icons-material/AutoStories";
 import Create from "@mui/icons-material/Create";
+import styled from "styled-components";
 //TODO: bundle size mui?
+
+const StyledListItem = styled(ListItem)`
+  padding-right: 6rem !important;
+  word-wrap: break-word;
+`;
 
 const ToDoItem = ({
   item,
@@ -27,7 +33,7 @@ const ToDoItem = ({
   };
 
   return (
-    <ListItem
+    <StyledListItem
       secondaryAction={
         <React.Fragment>
           <IconButton>
@@ -39,7 +45,6 @@ const ToDoItem = ({
             />
           </IconButton>
           <IconButton edge="end" aria-label="delete">
-              color="primary"
             <DeleteIcon item-id={id} onClick={handleRemoveClick} />
           </IconButton>
         </React.Fragment>
@@ -51,7 +56,7 @@ const ToDoItem = ({
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={task} />
-    </ListItem>
+    </StyledListItem>
   );
 };
 
