@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import ToDoList from "./components/ToDoList";
+import ToDoList from "./components/List";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 

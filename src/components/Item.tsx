@@ -1,5 +1,5 @@
 import React from "react";
-import { HandleRemoveType, TodoItemType } from "./types";
+import { HandleRemoveType, ItemType } from "./types";
 import {
   Avatar,
   IconButton,
@@ -22,7 +22,7 @@ const ToDoItem = ({
   item,
   handleRemove,
 }: {
-  item: TodoItemType;
+  item: ItemType;
   handleRemove: HandleRemoveType;
 }) => {
   const { id, task } = item;

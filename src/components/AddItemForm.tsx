@@ -1,9 +1,8 @@
 import { AddCircle } from "@mui/icons-material";
-import { IconButton, ListItem, TextField } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 import styled from "styled-components";
-import { AddTaskType } from "./types";
+import { AddItemType } from "./types";
 
 const ADD_ITEM_TEXT = "Agregar libro...";
 
@@ -21,7 +20,7 @@ const StyledTextField = styled(TextField)`
   width: 85%;
 `;
 
-const AddItem = ({ addTask }: { addTask: AddTaskType }) => {
+const AddItem = ({ addTask }: { addTask: AddItemType }) => {
   const [userInput, setUserInput] = useState("");
 
   //TODO: Type of events shouldn't be any

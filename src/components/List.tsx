@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AddItem from "./AddItemForm";
 import { useStickyState } from "./helpers";
-import ToDoItem from "./ToDoItem";
-import {
-  AddTaskType,
-  HandleRemoveType,
-  TodoItemType,
-  ToDoListType,
-} from "./types";
+import ToDoItem from "./Item";
+import { AddItemType, HandleRemoveType, ItemType } from "./types";
 
 import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
@@ -26,25 +21,25 @@ const Demo = styled("div")(({ theme }) => ({
 const ToDoList = () => {
   const [toDoList, setToDoList] = useStickyState([], "list");
 
-  const addTask: AddTaskType = (userInput: string) => {
+  const addItem: AddItemType = (userInput: string) => {
     setToDoList([...toDoList, { id: uid(), task: userInput }]);
   };
 
   const handleRemove: HandleRemoveType = (id: string) => {
-    const newToDoList = toDoList.filter((item: TodoItemType) => item.id !== id);
+    const newToDoList = toDoList.filter((item: ItemType) => item.id !== id);
     setToDoList(newToDoList);
   };
 
   return (
     <Demo>
       <List>
-        {toDoList.map((item: TodoItemType) => {
+        {toDoList.map((item: ItemType) => {
           return (
             <ToDoItem key={item.id} item={item} handleRemove={handleRemove} />
           );
         })}
         <ListItem>
-          <AddItem addTask={addTask} />
+          <AddItem addTask={addItem} />
         </ListItem>
       </List>
     </Demo>
