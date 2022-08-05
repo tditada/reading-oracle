@@ -36,14 +36,14 @@ const ToDoItem = ({
     <StyledListItem
       secondaryAction={
         <React.Fragment>
-          <IconButton>
+          {/* <IconButton>
             <Create
               item-id={id}
               onClick={(e) =>
                 console.log(e.currentTarget.getAttribute("item-id"))
               }
             />
-          </IconButton>
+          </IconButton> */}
           <IconButton edge="end" aria-label="delete">
             <DeleteIcon item-id={id} onClick={handleRemoveClick} />
           </IconButton>

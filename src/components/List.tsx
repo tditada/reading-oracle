@@ -6,17 +6,38 @@ import { AddItemType, HandleRemoveType, ItemType } from "./types";
 
 import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
-import { ListItem } from "@mui/material";
+import { Button, ListItem } from "@mui/material";
+
+const BUTTON_TEXT = "¿Qué leo?";
 
 const uid = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
-const Demo = styled("div")(({ theme }) => ({
-  "max-width": "600px",
+const Container = styled("div")(({ theme }) => ({
   background: "rgb(255 255 255 / 10%)",
   "border-radius": "1em",
 }));
+
+// Inspiration: https://codepen.io/Colt/pen/RwWbKee
+const StyledButton = styled(Button)`
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #2f7a88 10px 30px,
+    #70a8a2 30px 50px,
+    #a2abaa 50px 70px,
+    #a88e96 70px 90px,
+    #c894af 90px 110px
+  );
+  color: white;
+  transition: 0.5s;
+  background-size: 300% 300%;
+
+  &:hover {
+    background-position: 20% center;
+  }
+`;
 
 const ToDoList = () => {
   const [toDoList, setToDoList] = useStickyState([], "list");
@@ -31,7 +52,7 @@ const ToDoList = () => {
   };
 
   return (
-    <Demo>
+    <Container>
       <List>
         {toDoList.map((item: ItemType) => {
           return (
@@ -41,8 +62,11 @@ const ToDoList = () => {
         <ListItem>
           <AddItem addItem={addItem} />
         </ListItem>
+        <ListItem>
+          <StyledButton variant="contained">{BUTTON_TEXT}</StyledButton>
+        </ListItem>
       </List>
-    </Demo>
+    </Container>
   );
 };
 
