@@ -20,7 +20,7 @@ const StyledTextField = styled(TextField)`
   width: 85%;
 `;
 
-const AddItem = ({ addTask }: { addTask: AddItemType }) => {
+const AddItem = ({ addItem }: { addItem: AddItemType }) => {
   const [userInput, setUserInput] = useState("");
 
   //TODO: Type of events shouldn't be any
@@ -30,7 +30,7 @@ const AddItem = ({ addTask }: { addTask: AddItemType }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    addTask(userInput);
+    addItem(userInput);
     setUserInput("");
   };
 
@@ -45,7 +45,7 @@ const AddItem = ({ addTask }: { addTask: AddItemType }) => {
         placeholder={ADD_ITEM_TEXT}
       />
       <StyledIconButton>
-        <AddCircle />
+        <AddCircle onClick={handleSubmit} />
       </StyledIconButton>
     </StyledForm>
   );

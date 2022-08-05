@@ -39,7 +39,7 @@ const ToDoList = () => {
           );
         })}
         <ListItem>
-          <AddItem addTask={addItem} />
+          <AddItem addItem={addItem} />
         </ListItem>
       </List>
     </Demo>
