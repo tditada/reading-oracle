@@ -17,6 +17,7 @@ const uid = () => {
 const Container = styled("div")(({ theme }) => ({
   background: "rgb(255 255 255 / 10%)",
   "border-radius": "1em",
+  overflow: "auto",
 }));
 
 // Inspiration: https://codepen.io/Colt/pen/RwWbKee
