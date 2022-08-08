@@ -14,8 +14,7 @@ import styled from "styled-components";
 //TODO: bundle size mui? https://mui.com/material-ui/guides/minimizing-bundle-size/
 
 const StyledListItem = styled(ListItem)`
-  padding-right: 6rem !important;
-  word-wrap: break-word;
+  overflow-wrap: normal;
 `;
 
 const ToDoItem = ({
