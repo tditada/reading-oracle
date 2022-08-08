@@ -45,7 +45,6 @@ const StyledButton = styled(Button)`
 
 const ToDoList = () => {
   const [toDoList, setToDoList] = useStickyState([], "list");
-  const [loading, setLoading] = useState<boolean>(false);
 
   const addItem: AddItemType = (userInput: string) => {
     setToDoList([...toDoList, { id: uid(), task: userInput, shuffled: false }]);
@@ -56,10 +55,8 @@ const ToDoList = () => {
     setToDoList(newToDoList);
   };
 
-  // Probably move button functionality to its own component
   const handleShuffle = (e: any) => {
     e.preventDefault();
-    setLoading(true);
 
     const selectedItem = shuffle(toDoList);
     const newToDoList = toDoList.map((item: ItemType) => {
@@ -69,8 +66,6 @@ const ToDoList = () => {
       return { ...item, shuffled: false };
     });
     setToDoList(newToDoList);
-
-    setLoading(false);
   };
 
   return (
@@ -86,7 +81,7 @@ const ToDoList = () => {
         </ListItem>
         <ListItem>
           <StyledButton variant="contained" onClick={handleShuffle}>
-            {!loading ? BUTTON_TEXT : "..."}
+            {BUTTON_TEXT}
           </StyledButton>
         </ListItem>
       </List>

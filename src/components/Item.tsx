@@ -16,7 +16,13 @@ import styled from "styled-components";
 const StyledListItem = styled(ListItem)<Pick<ItemType, "shuffled">>`
   word-wrap: break-word;
   overflow-wrap: normal;
-  background-color: ${(p) => (p.shuffled ? "red" : "")};
+  background-color: ${(p) => (p.shuffled ? "#70a8a2" : "")};
+  color: ${(p) => (p.shuffled ? "white" : "")};
+  transition: background-color 1000ms linear;
+`;
+
+const StyledAutoStories = styled(AutoStories)<Pick<ItemType, "shuffled">>`
+  color: ${(p) => (p.shuffled ? "white" : "")};
 `;
 
 const ToDoItem = ({
@@ -54,7 +60,7 @@ const ToDoItem = ({
     >
       <ListItemAvatar>
         <Avatar>
-          <AutoStories />
+          <StyledAutoStories shuffled={shuffled} />
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={task} />
