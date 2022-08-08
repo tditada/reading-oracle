@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AddItem from "./AddItemForm";
 import { useStickyState } from "./helpers";
 import ToDoItem from "./Item";
@@ -13,6 +13,9 @@ const BUTTON_TEXT = "¿Qué leo?";
 const uid = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
+
+const shuffle = (list: Array<ItemType>) =>
+  list[Math.floor(Math.random() * list.length)];
 
 const Container = styled("div")(({ theme }) => ({
   background: "rgb(255 255 255 / 10%)",
@@ -42,14 +45,32 @@ const StyledButton = styled(Button)`
 
 const ToDoList = () => {
   const [toDoList, setToDoList] = useStickyState([], "list");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const addItem: AddItemType = (userInput: string) => {
-    setToDoList([...toDoList, { id: uid(), task: userInput }]);
+    setToDoList([...toDoList, { id: uid(), task: userInput, shuffled: false }]);
   };
 
   const handleRemove: HandleRemoveType = (id: string) => {
     const newToDoList = toDoList.filter((item: ItemType) => item.id !== id);
     setToDoList(newToDoList);
+  };
+
+  // Probably move button functionality to its own component
+  const handleShuffle = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const selectedItem = shuffle(toDoList);
+    const newToDoList = toDoList.map((item: ItemType) => {
+      if (item.id === selectedItem.id) {
+        return { ...item, shuffled: true };
+      }
+      return { ...item, shuffled: false };
+    });
+    setToDoList(newToDoList);
+
+    setLoading(false);
   };
 
   return (
@@ -64,7 +85,9 @@ const ToDoList = () => {
           <AddItem addItem={addItem} />
         </ListItem>
         <ListItem>
-          <StyledButton variant="contained">{BUTTON_TEXT}</StyledButton>
+          <StyledButton variant="contained" onClick={handleShuffle}>
+            {!loading ? BUTTON_TEXT : "..."}
+          </StyledButton>
         </ListItem>
       </List>
     </Container>

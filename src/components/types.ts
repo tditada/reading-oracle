@@ -1,6 +1,7 @@
 export type ItemType = {
   id: string;
   task: string;
+  shuffled: boolean;
 };
 
 export type HandleToggleType = (id: string) => void;

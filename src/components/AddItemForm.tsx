@@ -17,7 +17,7 @@ const StyledIconButton = styled(IconButton)`
 `;
 
 const StyledTextField = styled(TextField)`
-  width: 85%;
+  width: 80%;
 `;
 
 const AddItem = ({ addItem }: { addItem: AddItemType }) => {

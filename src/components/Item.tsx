@@ -13,8 +13,10 @@ import AutoStories from "@mui/icons-material/AutoStories";
 import styled from "styled-components";
 //TODO: bundle size mui? https://mui.com/material-ui/guides/minimizing-bundle-size/
 
-const StyledListItem = styled(ListItem)`
+const StyledListItem = styled(ListItem)<Pick<ItemType, "shuffled">>`
+  word-wrap: break-word;
   overflow-wrap: normal;
+  background-color: ${(p) => (p.shuffled ? "red" : "")};
 `;
 
 const ToDoItem = ({
@@ -24,7 +26,7 @@ const ToDoItem = ({
   item: ItemType;
   handleRemove: HandleRemoveType;
 }) => {
-  const { id, task } = item;
+  const { id, task, shuffled } = item;
 
   const handleRemoveClick = (e: any) => {
     e.preventDefault(); //TODO: Is this needed?
@@ -48,6 +50,7 @@ const ToDoItem = ({
           </IconButton>
         </React.Fragment>
       }
+      shuffled={shuffled}
     >
       <ListItemAvatar>
         <Avatar>
