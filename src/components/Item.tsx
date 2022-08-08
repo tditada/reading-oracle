@@ -13,6 +13,8 @@ import AutoStories from "@mui/icons-material/AutoStories";
 import styled from "styled-components";
 //TODO: bundle size mui? https://mui.com/material-ui/guides/minimizing-bundle-size/
 
+const SELECTED_TEXT = "¡Feliz lectura!";
+
 const StyledListItem = styled(ListItem)<Pick<ItemType, "shuffled">>`
   word-wrap: break-word;
   overflow-wrap: normal;
@@ -63,7 +65,7 @@ const ToDoItem = ({
           <StyledAutoStories shuffled={shuffled} />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={task} />
+      <ListItemText primary={task} secondary={shuffled ? SELECTED_TEXT : ""} />
     </StyledListItem>
   );
 };
