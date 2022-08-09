@@ -27,9 +27,9 @@ const StyledEmptyStateDiv = styled.div`
 `;
 
 // Inspiration: https://codepen.io/Colt/pen/RwWbKee
-const StyledButton = styled(Button)`
+const StyledShuffleButton = styled(Button)`
   width: 100%;
-  font-weight: bold;
+  font-weight: bold !important;
   background-image: repeating-linear-gradient(
     -45deg,
     #2f7a88 10px 30px,
@@ -38,8 +38,8 @@ const StyledButton = styled(Button)`
     #a88e96 70px 90px,
     #c894af 90px 110px
   );
-  color: white;
-  transition: 0.5s;
+  color: white !important;
+  transition: all 0.5s ease 0s !important;
   background-size: 300% 300%;
 
   &:hover {
@@ -89,13 +89,13 @@ const ToDoList = () => {
           <AddItem addItem={addItem} />
         </ListItem>
         <ListItem>
-          <StyledButton
+          <StyledShuffleButton
             disabled={toDoList.length < 2}
             variant="contained"
             onClick={handleShuffle}
           >
             {BUTTON_TEXT}
-          </StyledButton>
+          </StyledShuffleButton>
         </ListItem>
       </List>
     </Container>
