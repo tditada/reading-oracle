@@ -3,8 +3,7 @@ import AddItem from "./AddItemForm";
 import { useStickyState } from "./helpers";
 import ToDoItem from "./Item";
 import { AddItemType, HandleRemoveType, ItemType } from "./types";
-
-import { styled } from "@mui/material/styles";
+import styled from "styled-components";
 import List from "@mui/material/List";
 import { Button, ListItem } from "@mui/material";
 
@@ -17,15 +16,20 @@ const uid = () => {
 const shuffle = (list: Array<ItemType>) =>
   list[Math.floor(Math.random() * list.length)];
 
-const Container = styled("div")(({ theme }) => ({
-  background: "rgb(255 255 255 / 10%)",
-  "border-radius": "1em",
-  overflow: "auto",
-}));
+const Container = styled.div`
+  background: rgb(255 255 255 / 10%);
+  border-radius: 1em;
+  overflow: auto;
+`;
+
+const StyledEmptyStateDiv = styled.div`
+  text-align: center;
+`;
 
 // Inspiration: https://codepen.io/Colt/pen/RwWbKee
 const StyledButton = styled(Button)`
   width: 100%;
+  font-weight: bold;
   background-image: repeating-linear-gradient(
     -45deg,
     #2f7a88 10px 30px,
@@ -76,11 +80,20 @@ const ToDoList = () => {
             <ToDoItem key={item.id} item={item} handleRemove={handleRemove} />
           );
         })}
+        {!toDoList.length ? (
+          <StyledEmptyStateDiv>La lista está vacia</StyledEmptyStateDiv>
+        ) : (
+          ""
+        )}
         <ListItem>
           <AddItem addItem={addItem} />
         </ListItem>
         <ListItem>
-          <StyledButton variant="contained" onClick={handleShuffle}>
+          <StyledButton
+            disabled={toDoList.length < 2}
+            variant="contained"
+            onClick={handleShuffle}
+          >
             {BUTTON_TEXT}
           </StyledButton>
         </ListItem>

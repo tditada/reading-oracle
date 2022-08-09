@@ -30,8 +30,10 @@ const AddItem = ({ addItem }: { addItem: AddItemType }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    addItem(userInput);
-    setUserInput("");
+    if (userInput) {
+      addItem(userInput);
+      setUserInput("");
+    }
   };
 
   return (

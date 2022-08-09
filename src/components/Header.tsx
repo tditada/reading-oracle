@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const HEADER_TEXT = "Oráculo Lector";
-const SUBHEADER_TEXT = "El destino decide tu próxima lectura";
+const SUBHEADER_TEXT =
+  "Agregá los libros y el destino decide tu próxima lectura";
 
 const StyledHeader = styled.header`
   text-align: center;
