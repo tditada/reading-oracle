@@ -1,105 +1,46 @@
-import React, { useState } from "react";
-import AddItem from "./AddItemForm";
-import { useStickyState } from "./helpers";
-import ToDoItem from "./Item";
-import { AddItemType, HandleRemoveType, ItemType } from "./types";
+import React from "react";
 import styled from "styled-components";
-import List from "@mui/material/List";
-import { Button, ListItem } from "@mui/material";
+import MUIList from "@mui/material/List";
+import { ListItem } from "@mui/material";
+import AddItem from "./AddItemForm";
+import { AddItemType, HandleRemoveType, ItemType } from "./types";
+import Item from "./Item";
 
-const BUTTON_TEXT = "¿Qué leo?";
-
-const uid = () => {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
-};
-
-const shuffle = (list: Array<ItemType>) =>
-  list[Math.floor(Math.random() * list.length)];
-
-const Container = styled.div`
-  background: rgb(255 255 255 / 10%);
-  border-radius: 1em;
-  overflow: auto;
-`;
-
-const StyledEmptyStateDiv = styled.div`
+export const StyledEmptyStateDiv = styled.div`
   text-align: center;
 `;
 
-// Inspiration: https://codepen.io/Colt/pen/RwWbKee
-const StyledShuffleButton = styled(Button)`
-  width: 100%;
-  font-weight: bold !important;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    #2f7a88 10px 30px,
-    #70a8a2 30px 50px,
-    #a2abaa 50px 70px,
-    #a88e96 70px 90px,
-    #c894af 90px 110px
-  );
-  color: white !important;
-  transition: all 0.5s ease 0s !important;
-  background-size: 300% 300%;
+const EMPTY_TEXT = " Tu lista de lectura está vacia";
 
-  &:hover {
-    background-position: 20% center;
-  }
-`;
-
-const ToDoList = () => {
-  const [toDoList, setToDoList] = useStickyState([], "list");
-
-  const addItem: AddItemType = (userInput: string) => {
-    setToDoList([...toDoList, { id: uid(), task: userInput, shuffled: false }]);
-  };
-
-  const handleRemove: HandleRemoveType = (id: string) => {
-    const newToDoList = toDoList.filter((item: ItemType) => item.id !== id);
-    setToDoList(newToDoList);
-  };
-
-  const handleShuffle = (e: any) => {
-    e.preventDefault();
-
-    const selectedItem = shuffle(toDoList);
-    const newToDoList = toDoList.map((item: ItemType) => {
-      if (item.id === selectedItem.id) {
-        return { ...item, shuffled: true };
-      }
-      return { ...item, shuffled: false };
-    });
-    setToDoList(newToDoList);
-  };
-
+const List = ({
+  toDoList,
+  handleRemove,
+  addItem,
+}: {
+  toDoList: Array<ItemType>;
+  handleRemove: HandleRemoveType;
+  addItem: AddItemType;
+}) => {
   return (
-    <Container>
-      <List>
-        {toDoList.map((item: ItemType) => {
-          return (
-            <ToDoItem key={item.id} item={item} handleRemove={handleRemove} />
-          );
-        })}
-        {!toDoList.length ? (
-          <StyledEmptyStateDiv>La lista está vacia</StyledEmptyStateDiv>
-        ) : (
-          ""
+    <React.Fragment>
+      <ListItem>
+        <AddItem addItem={addItem} />
+      </ListItem>
+      <MUIList>
+        {toDoList
+          .slice()
+          .reverse()
+          .map((item: ItemType) => {
+            return (
+              <Item key={item.id} item={item} handleRemove={handleRemove} />
+            );
+          })}
+        {!toDoList.length && (
+          <StyledEmptyStateDiv>{EMPTY_TEXT}</StyledEmptyStateDiv>
         )}
-        <ListItem>
-          <AddItem addItem={addItem} />
-        </ListItem>
-        <ListItem>
-          <StyledShuffleButton
-            disabled={toDoList.length < 2}
-            variant="contained"
-            onClick={handleShuffle}
-          >
-            {BUTTON_TEXT}
-          </StyledShuffleButton>
-        </ListItem>
-      </List>
-    </Container>
+      </MUIList>
+    </React.Fragment>
   );
 };
 
-export default ToDoList;
+export default List;

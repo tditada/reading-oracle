@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import ToDoList from "./components/List";
+import Main from "./components/Main";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -34,7 +34,7 @@ function App() {
       <StyledApp>
         <Header />
         <StyledMain>
-          <ToDoList />
+          <Main />
         </StyledMain>
         <Footer />
       </StyledApp>

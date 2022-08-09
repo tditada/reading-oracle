@@ -15,26 +15,32 @@ import styled from "styled-components";
 
 const SELECTED_TEXT = "¡Feliz lectura!";
 
-const StyledListItem = styled(ListItem)<Pick<ItemType, "shuffled">>`
+type StyleProps = {
+  selected: boolean;
+};
+
+const StyledListItem = styled(ListItem)<StyleProps>`
   word-wrap: break-word;
   overflow-wrap: normal;
-  background-color: ${(p) => (p.shuffled ? "#70a8a2" : "")};
-  color: ${(p) => (p.shuffled ? "white" : "")};
   transition: background-color 1000ms linear;
+  background-color: ${(p) => (p.selected ? "#70a8a2" : "")};
+  color: ${(p) => (p.selected ? "white" : "")};
 `;
 
-const StyledAutoStories = styled(AutoStories)<Pick<ItemType, "shuffled">>`
-  color: ${(p) => (p.shuffled ? "white" : "")};
+const StyledAutoStories = styled(AutoStories)<StyleProps>`
+  color: ${(p) => (p.selected ? "white" : "")};
 `;
 
-const ToDoItem = ({
+const Item = ({
   item,
   handleRemove,
+  selected,
 }: {
   item: ItemType;
   handleRemove: HandleRemoveType;
+  selected?: boolean;
 }) => {
-  const { id, task, shuffled } = item;
+  const { id, title } = item;
 
   const handleRemoveClick = (e: any) => {
     e.preventDefault(); //TODO: Is this needed?
@@ -45,29 +51,23 @@ const ToDoItem = ({
     <StyledListItem
       secondaryAction={
         <React.Fragment>
-          {/* <IconButton>
-            <Create
-              item-id={id}
-              onClick={(e) =>
-                console.log(e.currentTarget.getAttribute("item-id"))
-              }
-            />
-          </IconButton> */}
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon item-id={id} onClick={handleRemoveClick} />
-          </IconButton>
+          {!selected && (
+            <IconButton edge="end" aria-label="delete">
+              <DeleteIcon item-id={id} onClick={handleRemoveClick} />
+            </IconButton>
+          )}
         </React.Fragment>
       }
-      shuffled={shuffled}
+      selected={selected || false}
     >
       <ListItemAvatar>
         <Avatar>
-          <StyledAutoStories shuffled={shuffled} />
+          <StyledAutoStories selected={selected || false} />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={task} secondary={shuffled ? SELECTED_TEXT : ""} />
+      <ListItemText primary={title} secondary={selected ? SELECTED_TEXT : ""} />
     </StyledListItem>
   );
 };
 
-export default ToDoItem;
+export default Item;
