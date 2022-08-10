@@ -1,8 +1,13 @@
 # Reading Oracle
 
-App to get a random book from your to be read list.
+The reading oracle app is a lightweight project to randomnly select your next read from your own to be read book list.
 
-Project build with [Create React App](https://github.com/facebook/create-react-app), Typescript, Styled Components, Material UI
+Tech Stack: Project build with [Create React App](https://github.com/facebook/create-react-app), Typescript, Styled Components, Material UI
+
+## Features
+
+1. List: you can add, remove and see the list of books from which the oracle will choose the next read.
+2. Shuffle/Oracle: a specific book will be selected from the list.
 
 ## Available Scripts
 
