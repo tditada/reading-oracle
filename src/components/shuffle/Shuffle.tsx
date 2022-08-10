@@ -1,12 +1,13 @@
-import { Button, IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
-import BookLoader from "./book-loader/BookLoader";
-import ReplayIcon from "@mui/icons-material/Replay";
-import { ItemType } from "./types";
+import BookLoader from "../book-loader/BookLoader";
+import ShuffledItem from "./ShuffledItem";
+import ShuffleRetry from "./ShuffleRetry";
+
+import { ItemType } from "../types";
 
 const BUTTON_TEXT = "¿Qué leo?";
-const SELECTED_TEXT = "¡Feliz lectura!";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -15,20 +16,6 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-`;
-
-const StyledSelected = styled.div`
-  padding: 1rem;
-  margin: 1rem;
-  transition: 3s;
-`;
-
-const StyledSelectedTitle = styled.div`
-  font-size: x-large;
-`;
-
-const StyledRetryContent = styled.div`
-  margin-bottom: 1rem;
 `;
 
 // Source: https://codepen.io/Colt/pen/RwWbKee
@@ -79,7 +66,9 @@ const ShuffleSection = ({
 
   return (
     <StyledContainer>
-      {!shuffledItem && !isLoading && (
+      {isLoading ? (
+        <BookLoader />
+      ) : !shuffledItem ? (
         <StyledShuffleButton
           disabled={toDoList.length < 2}
           variant="contained"
@@ -87,19 +76,10 @@ const ShuffleSection = ({
         >
           {BUTTON_TEXT}
         </StyledShuffleButton>
-      )}
-      {isLoading && <BookLoader />}
-      {shuffledItem && !isLoading && (
+      ) : (
         <React.Fragment>
-          <StyledSelected>
-            <StyledSelectedTitle>{shuffledItem.title}</StyledSelectedTitle>
-            <div>{SELECTED_TEXT}</div>
-          </StyledSelected>
-          <StyledRetryContent>
-            <IconButton onClick={unshuffled} aria-label="retry">
-              <ReplayIcon />
-            </IconButton>
-          </StyledRetryContent>
+          <ShuffledItem shuffledItem={shuffledItem} />
+          <ShuffleRetry unshuffled={unshuffled} />
         </React.Fragment>
       )}
     </StyledContainer>

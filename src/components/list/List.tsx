@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MUIList from "@mui/material/List";
 import { ListItem } from "@mui/material";
 import AddItem from "./AddItemForm";
-import { AddItemType, HandleRemoveType, ItemType } from "./types";
+import { AddItemType, HandleRemoveType, ItemType } from "../types";
 import Item from "./Item";
 
 export const StyledEmptyStateDiv = styled.div`

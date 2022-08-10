@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { shuffle, uid, useStickyState } from "./helpers";
 import { AddItemType, HandleRemoveType, ItemType } from "./types";
 import ToggleButtons from "./ToggleButtons";
-import ShuffleSection from "./Shuffle";
-import List from "./List";
+import ShuffleSection from "./shuffle/Shuffle";
+import List from "./list/List";
 
 export const StyledContainer = styled.div`
   background: rgb(255 255 255 / 10%);
