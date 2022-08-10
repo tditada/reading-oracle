@@ -26,7 +26,6 @@ const ToggleButtons = ({
       value={showPart}
       exclusive
       onChange={(e: any) => {
-        console.log(e.target.value);
         setShowPart(parseInt(e.target.value));
       }}
       aria-label="text alignment"

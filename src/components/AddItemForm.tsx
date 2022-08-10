@@ -46,8 +46,8 @@ const AddItem = ({ addItem }: { addItem: AddItemType }) => {
         onChange={handleChange}
         placeholder={ADD_ITEM_TEXT}
       />
-      <StyledIconButton>
-        <AddCircle onClick={handleSubmit} />
+      <StyledIconButton onClick={handleSubmit}>
+        <AddCircle />
       </StyledIconButton>
     </StyledForm>
   );

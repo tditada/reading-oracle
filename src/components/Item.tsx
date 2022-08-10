@@ -52,8 +52,13 @@ const Item = ({
       secondaryAction={
         <React.Fragment>
           {!selected && (
-            <IconButton edge="end" aria-label="delete">
-              <DeleteIcon item-id={id} onClick={handleRemoveClick} />
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              item-id={id}
+              onClick={handleRemoveClick}
+            >
+              <DeleteIcon />
             </IconButton>
           )}
         </React.Fragment>

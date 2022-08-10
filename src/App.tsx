@@ -10,7 +10,7 @@ const StyledApp = styled.section`
   padding: 4em;
 `;
 
-const StyledMain = styled.main`
+const StyledMainContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -33,9 +33,9 @@ function App() {
       </React.Fragment>
       <StyledApp>
         <Header />
-        <StyledMain>
+        <StyledMainContainer>
           <Main />
-        </StyledMain>
+        </StyledMainContainer>
         <Footer />
       </StyledApp>
     </ThemeProvider>
