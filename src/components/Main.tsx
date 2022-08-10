@@ -55,6 +55,7 @@ const ItemList = () => {
             toDoList={toDoList}
             handleShuffle={handleShuffle}
             shuffledItem={shuffledItem}
+            unshuffled={() => setShuffledItem(undefined)}
           />
         )}
       </StyledContainer>
