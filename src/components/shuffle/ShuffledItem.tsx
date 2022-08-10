@@ -16,12 +16,12 @@ const StyledSelectedTitle = styled.div`
 
 const ShuffledItem = ({ shuffledItem }: { shuffledItem: ItemType }) => {
   return (
-    <React.Fragment>
+    <>
       <StyledSelected>
         <StyledSelectedTitle>{shuffledItem.title}</StyledSelectedTitle>
         <div>{SELECTED_TEXT}</div>
       </StyledSelected>
-    </React.Fragment>
+    </>
   );
 };
 

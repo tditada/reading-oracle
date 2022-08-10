@@ -35,7 +35,7 @@ const Item = ({
   return (
     <StyledListItem
       secondaryAction={
-        <React.Fragment>
+        <>
           <IconButton
             edge="end"
             aria-label="delete"
@@ -44,7 +44,7 @@ const Item = ({
           >
             <DeleteIcon />
           </IconButton>
-        </React.Fragment>
+        </>
       }
     >
       <ListItemAvatar>

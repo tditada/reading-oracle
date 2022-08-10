@@ -26,11 +26,11 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <React.Fragment>
+      <>
         <div id="stars" />
         <div id="stars2" />
         <div id="stars3" />
-      </React.Fragment>
+      </>
       <StyledApp>
         <Header />
         <StyledMainContainer>

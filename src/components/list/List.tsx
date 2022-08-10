@@ -22,7 +22,7 @@ const List = ({
   addItem: AddItemType;
 }) => {
   return (
-    <React.Fragment>
+    <>
       <ListItem>
         <AddItem addItem={addItem} />
       </ListItem>
@@ -39,7 +39,7 @@ const List = ({
           <StyledEmptyStateDiv>{EMPTY_TEXT}</StyledEmptyStateDiv>
         )}
       </MUIList>
-    </React.Fragment>
+    </>
   );
 };
 

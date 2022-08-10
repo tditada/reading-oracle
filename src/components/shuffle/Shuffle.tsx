@@ -77,10 +77,10 @@ const ShuffleSection = ({
           {BUTTON_TEXT}
         </StyledShuffleButton>
       ) : (
-        <React.Fragment>
+        <>
           <ShuffledItem shuffledItem={shuffledItem} />
           <ShuffleRetry unshuffled={unshuffled} />
-        </React.Fragment>
+        </>
       )}
     </StyledContainer>
   );
