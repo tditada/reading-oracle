@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Content from "./components/Content";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const StyledApp = styled.section`
   padding: 4em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 `;
 
 const StyledMainContainer = styled.main`
@@ -34,7 +39,7 @@ function App() {
       <StyledApp>
         <Header />
         <StyledMainContainer>
-          <Main />
+          <Content />
         </StyledMainContainer>
         <Footer />
       </StyledApp>

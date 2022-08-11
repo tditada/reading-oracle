@@ -19,7 +19,7 @@ export enum Sections {
   SHUFFLE,
 }
 
-const ItemList = () => {
+const Content = () => {
   const [toDoList, setToDoList] = useStickyState([], "list");
   const [showPart, setShowPart] = useState<Sections>(Sections.LIST);
   const [shuffledItem, setShuffledItem] = useState<ItemType>();
@@ -63,4 +63,4 @@ const ItemList = () => {
   );
 };
 
-export default ItemList;
+export default Content;
