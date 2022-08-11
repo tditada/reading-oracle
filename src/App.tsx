@@ -12,7 +12,6 @@ const StyledApp = styled.section`
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 `;
 
 const StyledMainContainer = styled.main`
