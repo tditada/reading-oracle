@@ -14,6 +14,8 @@ const ToggleButtonGroupStyled = styled(ToggleButtonGroup)`
 const BOOK_LIST = "TUS LIBROS";
 const ORACLE = "ORÁCULO";
 
+const TOGGLE_BUTTONS_LABEL = "Lista de libros u oráculo";
+
 const ToggleButtons = ({
   showPart,
   setShowPart,
@@ -28,12 +30,12 @@ const ToggleButtons = ({
       onChange={(e: any) => {
         setShowPart(parseInt(e.target.value));
       }}
-      aria-label="text alignment"
+      aria-label={TOGGLE_BUTTONS_LABEL}
     >
-      <ToggleButton value={Sections.LIST} aria-label="left aligned">
+      <ToggleButton value={Sections.LIST} aria-label={BOOK_LIST}>
         {BOOK_LIST}
       </ToggleButton>
-      <ToggleButton value={Sections.SHUFFLE} aria-label="centered">
+      <ToggleButton value={Sections.SHUFFLE} aria-label={ORACLE}>
         {ORACLE}
       </ToggleButton>
     </ToggleButtonGroupStyled>

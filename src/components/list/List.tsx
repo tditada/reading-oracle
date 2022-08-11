@@ -23,9 +23,9 @@ const List = ({
 }) => {
   return (
     <>
-      <ListItem>
+      <>
         <AddItem addItem={addItem} />
-      </ListItem>
+      </>
       <MUIList>
         {toDoList
           .slice()

@@ -18,6 +18,8 @@ const StyledListItem = styled(ListItem)`
   transition: background-color 1000ms linear;
 `;
 
+const DELETE_BUTTON_LABEL = "Borrar libro";
+
 const Item = ({
   item,
   handleRemove,
@@ -38,7 +40,7 @@ const Item = ({
         <>
           <IconButton
             edge="end"
-            aria-label="delete"
+            aria-label={DELETE_BUTTON_LABEL}
             item-id={id}
             onClick={handleRemoveClick}
           >

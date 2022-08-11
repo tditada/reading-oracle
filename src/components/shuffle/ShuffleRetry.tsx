@@ -7,10 +7,12 @@ const StyledRetryContent = styled.div`
   margin-bottom: 1rem;
 `;
 
+const RETRY_BUTTON_LABEL = "INTENTAR DE NUEVO";
+
 const ShuffleRetry = ({ unshuffled }: { unshuffled: () => void }) => {
   return (
     <StyledRetryContent>
-      <IconButton onClick={unshuffled} aria-label="retry">
+      <IconButton onClick={unshuffled} aria-label={RETRY_BUTTON_LABEL}>
         <ReplayIcon />
       </IconButton>
     </StyledRetryContent>

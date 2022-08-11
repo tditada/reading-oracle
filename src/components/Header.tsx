@@ -8,8 +8,9 @@ const StyledHeader = styled.header`
   text-align: center;
 `;
 
-const StyledSubHeader = styled.h3`
+const StyledSubHeader = styled.h2`
   font-weight: 100;
+  font-size: large;
 `;
 
 const Header = () => {
