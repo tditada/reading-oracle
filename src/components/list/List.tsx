@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import MUIList from "@mui/material/List";
-import { ListItem } from "@mui/material";
 import AddItem from "./AddItemForm";
 import { AddItemType, HandleRemoveType, ItemType } from "../types";
 import Item from "./Item";
@@ -10,7 +9,7 @@ export const StyledEmptyStateDiv = styled.div`
   text-align: center;
 `;
 
-const EMPTY_TEXT = " Tu lista de lectura está vacia";
+const EMPTY_TEXT = " Tu lista de lectura está vacía";
 
 const List = ({
   toDoList,
