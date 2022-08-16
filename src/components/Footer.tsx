@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const FOOTER_TEXT = "Hecho por ";
 const LINK_ACCOUNT = "@masalladelpapel";
+const CONTACT_URL = "https://lnk.bio/masalladelpapel";
 
 const StyledFooter = styled.footer`
   margin-top: 3em;
@@ -19,9 +20,7 @@ const Footer = () => {
     <StyledFooter>
       <p>
         {FOOTER_TEXT}
-        <StyledLink href="https://www.instagram.com/masalladelpapel/">
-          {LINK_ACCOUNT}
-        </StyledLink>
+        <StyledLink href={CONTACT_URL}>{LINK_ACCOUNT}</StyledLink>
       </p>
     </StyledFooter>
   );
