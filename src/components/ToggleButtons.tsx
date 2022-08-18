@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+
 import styled from "styled-components";
 import { Sections } from "./Content";
 

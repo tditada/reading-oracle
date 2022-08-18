@@ -1,6 +1,6 @@
 import React from "react";
 import ReplayIcon from "@mui/icons-material/Replay";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import styled from "styled-components";
 
 const StyledRetryContent = styled.div`

@@ -1,16 +1,13 @@
 import React from "react";
 import { HandleRemoveType, ItemType } from "../types";
-import {
-  Avatar,
-  IconButton,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AutoStories from "@mui/icons-material/AutoStories";
 import styled from "styled-components";
-//TODO: bundle size mui? https://mui.com/material-ui/guides/minimizing-bundle-size/
 
 const StyledListItem = styled(ListItem)`
   word-wrap: break-word;
